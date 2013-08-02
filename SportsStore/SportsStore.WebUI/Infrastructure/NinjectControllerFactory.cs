@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Concrete;
+using SportsStore.WebUI.Controllers;
 
 namespace SportsStore.WebUI.Infrastructure
 {
@@ -23,8 +24,7 @@ namespace SportsStore.WebUI.Infrastructure
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
-            var i = controllerType == null ? null : (IController)_ninjectKernel.Get(controllerType);
-            return i;
+            return controllerType == null ? null : (IController)_ninjectKernel.Get(controllerType);
         }
 
         private void AddBindings()
